@@ -1,0 +1,137 @@
+<h2>309 链表的实现2</h2>
+<ol>
+    <li>链表结点的数据构造</li>
+    <li>链表的数据构造</li>
+    <li>链表添加结点的实现</li>
+</ol>
+<h2>链表结点的构造</h2>
+每个结点除了数据外，还包含指向下个结点的指针
+<pre><code>
+class Node:
+    def __init__(self,data):
+        self.data=data #用于存储数据
+        self.next=None #用于指向下一结点
+</code></pre>
+<h2>链表的数据结构</h2>
+一个队列具有头节点和尾节点
+<pre><code>0.
+class LinkedList:
+    def __init__(self):
+        self.header = None
+        self.length = 0
+</code></pre>
+<h2>链表从头部尾部及任意位置添加结点</h2>
+<pre><code>
+class LinkedList:
+    def __init__(self):
+        self.header = None
+        self.length = 0
+
+    # 判断链表是否为空,数值使用==比较，对象使用is来判断是否为None即可。
+    def is_empty(self):
+        if self.header is None:
+            return True
+        else:
+            return False
+
+    # 在链表头部添加结点
+    def add_node_from_head(self, node):
+        if self.header is None:
+            self.header = node
+        else:
+            node.next = self.header
+            self.header = node
+        self.length += 1
+        return self
+
+    # 在链表尾部添加结点
+    def add_node_from_behind(self, node):
+        current_node = self.header
+        if self.is_empty():
+            self.add_node_from_head(node)
+        else:
+            # 一直遍历到尾部结点
+            while current_node.next is not None:
+                current_node = current_node.next
+            current_node.next = node
+        self.length += 1
+        return self
+
+    # 在任意位置添加结点
+    def add_node_index(self, node, index):
+        if self.is_empty():
+            self.header = node
+            self.length = 1
+            return self
+        if index > self.length - 1 or index < 0:
+            print("超出范围,插入失败!")
+            return self
+        else:
+            current_node = self.header
+            count = 0
+            while True:
+                if current_node is not None:
+                    # 最少有2个结点
+                    if count == index:
+                        print("...找到位置....")
+                        if count == 0:
+                            # 插入到头结点之前
+                            node.next = current_node
+                            self.header = node
+                        else:
+                            # 1. 新节点的next指向当前结点
+                            # 2. 上一个节点的next指向新结点
+                            node.next = current_node
+                            last_node.next = node
+                        self.length += 1
+                        return self
+                    else:
+                        count += 1
+                        last_node = current_node
+                        current_node = current_node.next
+                else:
+                    # 只有一个头结点
+                    node.next = current_node
+                    self.header = node
+                    self.length += 1
+                    return self
+     # 遍历链表
+    def traversing_list(self):
+        header_node = self.header
+        result = ",data:" + str(header_node.data)
+        while header_node.next is not None:
+            result = result + "-->" + "data:" + str(header_node.next.data)
+            temp = header_node
+            header_node = header_node.next
+            if temp == header_node:
+                return
+        print("链表为:", result, ",长度为:" + str(self.length))
+
+if __name__ == '__main__':
+    print("初始化一个链表!")
+    header = Node(0)
+    linked_list = LinkedList()
+    linked_list.add_node_index(header, 0)
+    linked_list.traversing_list()
+    print("在头部添加结点!")
+    node0 = Node(1)
+    linked_list.add_node_from_head(node0)
+    linked_list.traversing_list()
+    print("在尾部添加结点!")
+    node1 = Node(2)
+    linked_list.add_node_from_behind(node1)
+    linked_list.traversing_list()
+</code></pre>
+<h2>小结</h2>
+<ul>
+    <li>掌握链表结点的构造</li>
+    <li>掌握链表的构造，能实现在任意位置添加结点的功能</li>
+</ul>
+<h2>习题</h2>
+<ol>
+    <li>详细描述一下结点添加的过程，并自己实现一遍</li>
+    <li>预热思考下如何删除任意节点</li>
+</ol>
+<h2>打赏</h2>
+赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">

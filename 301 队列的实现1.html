@@ -1,0 +1,72 @@
+<h2>301 队列的实现1</h2>
+<ol>
+    <li>队列节点的数据构造</li>
+    <li>队列的数据构造</li>
+    <li>队列进站的实现</li>
+</ol>
+<h2>队列节点的构造</h2>
+这里使用链表实现队列，与栈一样，它是由一个个数据节点构成，每个数据节点除了数据外，还具有指向下一个节点的指针，队列节点的构造如下：
+<pre><code>
+class Node:
+    def __init__(self,data):
+        self.data=data #用于存储数据
+        self.next=None #用于指向下一数据
+</code></pre>
+<h2>队列的数据结构</h2>
+一个队列具有头节点和尾节点
+<pre><code>
+class Queue:
+    def __init__(self):
+        self.front=None #头部指针
+        self.rear=None #尾部指针
+</code></pre>
+<h2>数据进队列的实现</h2>
+对于一个队列来说，加入新节点需要在尾部加入节点，然后更新尾部指针，定义offer函数实现进队功能
+<pre><code>
+class Node:
+    def __init__(self, data):
+        self.data = data  # 用于存储数据
+        self.next = None  # 用于指向下一数据
+
+class Queue:
+    def __init__(self):
+        self.front = None  # 头部指针
+        self.rear = None  # 尾部指针
+
+    def offer(self, data):
+        new_node = Node(data)  # 构造一个节点数据
+        if(self.rear == None):
+            self.front = new_node
+        else:
+            self.rear.next = new_node
+        self.rear = new_node
+        new_node.next = None
+
+    def __str__(self):  # 重载__str__()函数用于,用于print()打印
+        if((self.front == None) & (self.rear == None)):
+            return("This is a queue structure\n" +
+                   "the queue is empty now!!!")
+        else:
+            return("This is a queue structure\n" +
+                   "the rear data is "+str(self.rear.data))
+
+myqueue1 = Queue()  # 实例化一个队列结构
+print(myqueue1)
+myqueue1.offer(3)  # 进队列
+print(myqueue1)
+myqueue1.offer(4)  # 进队列
+print(myqueue1)
+</code></pre>
+<h2>小结</h2>
+<ul>
+    <li>掌握队列数据节点的构造</li>
+    <li>掌握队列结构的构造，并能实现入队的功能</li>
+</ul>
+<h2>习题</h2>
+<ol>
+    <li>对于一个队列来说为什么需要同时需要头指针和尾指针？</li>
+    <li>本节课中队列结构中的offer()函数中添加节点前为什么要判断rear是否为None？</li>
+</ol>
+<h2>打赏</h2>
+赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">

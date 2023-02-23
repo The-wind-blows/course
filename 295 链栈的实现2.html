@@ -1,0 +1,84 @@
+<html>
+<body>
+<h2>295 链栈的实现2</h2>
+<ol>
+<li>数据出栈的实现</li>
+<li>链栈的实现</li>
+</ol>
+
+<h2>数据出栈的实现</h2>
+栈数据的出栈比进站相比，需要首先判断该栈是否是空栈，定义isempty()函数实现该功能，只需判断栈顶指针是否为空即可
+数据出栈时需要首先将出栈的元素保存下来用于返回，其次更新顶部指针，将顶部指针指向下一数据，最后将栈顶数据删除即可。注意栈顶元素删除的方法
+<pre><code>
+    def isempty(self):
+        return(self.top==None) #判断栈顶指针是否为空
+
+    def pop(self):
+        if(self.isempty()):
+            print("the stack is empty now!!!")
+        else:
+            temp=self.top.data #将栈尾数据临时保存
+            self.top=self.top.next #更新顶部指针
+            self.top.next=None #将栈顶数据节点删除
+            return temp #返回栈尾数据
+</code></pre>
+
+<h2>链栈的实现</h2>
+链栈类的整体实现如下，包含了数据进栈，数据出栈的基本方法，数据出栈与进栈是两个相反的过程，注意对比push()函数与pop()函数的区别
+<pre><code>
+class Node:
+    def __init__(self, data):
+        self.data = data  # 用于存储数据
+        self.next = None  # 用于指向下一数据
+class Stack:
+    def __init__(self):
+        self.top = None
+
+    def push(self, data):
+        push_node = Node(data)  # 构造一个节点数据
+        push_node.next = self.top  # 将数据节点指针插入栈尾部(2)
+        self.top = push_node  # 更新顶部指针(3)
+
+    def isempty(self):
+        return(self.top==None)
+
+    def pop(self):
+        if(self.isempty()):
+            print("the stack is empty now!!!")
+        else:
+            temp=self.top.data #将栈尾数据临时保存
+            self.top=self.top.next #更新顶部指针
+            self.top.next=None #将栈顶数据节点删除
+            return temp #返回栈尾数据
+
+    def __str__(self): #重载__str__()函数用于,用于print()打印
+        if(self.isempty()):
+            return("This is a stack structure\n"+\
+         "the stack is empty now!!!")
+        else:
+            return("This is a stack structure\n"+\
+         "the top data is "+str(self.top.data))
+mystack1=Stack() #实例化一个栈结构
+mystack1.push(3) #进站
+mystack1.push([2,1]) #进站
+print(mystack1)
+pop_value=mystack1.pop() #出站
+print(pop_value) 
+print(mystack1)
+</code></pre>
+
+<h2>小结</h2>
+<li>掌握数据出栈的方法</li>
+<li>掌握栈类的写法，并能够实现数据进栈、出栈的方法</li>
+
+<h2>习题</h2>
+<ol>
+<li>给上述的栈结构加入一个实例变量length，用来存贮栈的长度</li>
+<li>详细描述一下栈顶部元素出栈的细节，并绘制其过程</li>
+</ol>
+
+<h2>打赏</h2>
+赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+</html>

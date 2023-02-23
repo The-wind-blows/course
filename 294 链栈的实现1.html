@@ -1,0 +1,65 @@
+<h2>294 链栈的实现1</h2>
+<ol>
+ 	<li>链栈节点的数据构造</li>
+ 	<li>链链的数据构造</li>
+ 	<li>链链进站的实现</li>
+</ol>
+<h2>链栈节点的构造</h2>
+从上堂课中，我们可以知道，链栈由一个个的数据结点构成，而且每个数据节点还必须有一个指向下一个数据的指针。因此要构造链栈这种数据结构，我们首先构造出它的基本节点的数据结构。
+<pre><code>
+class Node:
+    def __init__(self,data):
+        self.data=data #用于存储数据
+        self.next=None #用于指向下一数据
+</code></pre>
+<h2>链链的数据结构</h2>
+从栈的性质可以知道，对于一个栈来说，我们仅需要知道它的顶部指针即可实现对栈的访问
+<pre><code>
+class Stack:
+    def __init__(self):
+        self.top=None #顶部指针
+</code></pre>
+<h2>数据进栈的实现</h2>
+对于一个链栈来说，进站时只需要将数据节点插入栈尾部即可，然后对栈的顶部指针进行更新,定义push()函数实现进站功能，这里重载的__str()__函数仅方便用户打印，不做硬性要求
+<pre><code>
+class Node:
+    def __init__(self,data):
+        self.data=data #用于存储数据
+        self.next=None #用于指向下一数据
+
+class Stack:
+    def __init__(self):
+        self.top=None
+		
+    def push(self,data):
+        push_node=Node(data) #构造一个节点数据
+        push_node.next=self.top #将数据节点指针插入栈尾部(2)
+        self.top=push_node #更新顶部指针(3)
+		
+    def __str__(self): #重载__str__()函数用于,用于print()打印
+        if(self.top==None):
+            return("This is a stack structure\n"+\
+         "the stack is empty now!!!")
+        else:
+            return("This is a stack structure\n"+\
+         "the top data is "+str(self.top.data))
+mystack1=Stack() #实例化一个栈结构
+print(mystack1)
+mystack1.push(3) #进站
+print(mystack1)
+mystack1.push(4) #进站
+print(mystack1)
+</code></pre>
+<h2>小结</h2>
+<ul>
+ 	<li>掌握栈数据节点的构造</li>
+ 	<li>掌握栈结构的构造，并能实现进站的功能</li>
+</ul>
+<h2>习题</h2>
+<ol>
+ 	<li>对于一个栈来说为什么仅知道头部指针即可实现对栈的访问？想一想为什么</li>
+ 	<li>本节课中栈结构中的push()函数中的第2,3行的顺序能交换吗？想一想为什么</li>
+</ol>
+<h2>打赏</h2>
+赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">

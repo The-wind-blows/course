@@ -1,0 +1,89 @@
+<html>
+
+<body>
+    <h2>302 队列的实现2</h2>
+    <ol>
+        <li>数据出队的实现</li>
+        <li>队列的实现</li>
+    </ol>
+
+    <h2>数据出队的实现</h2>
+    队列数据的出队比进队相比，首先需要判断队列是否为空
+    数据出队时需要首先将出队的元素保存下来用于返回，然后更新头部指针，最后需要将出队节点的next置空
+<pre><code>
+def poll(self):
+    if(self.front == None):
+        print("the queue is mepty now!!!")
+    else:
+        temp = self.front
+        self.front = self.front.next
+        temp.next = None
+        return temp.data
+</code></pre>
+
+    <h2>队列的实现</h2>
+    队列类的整体实现如下，包含了数据进队、出队的基本方法offer, poll
+<pre><code>
+class Node:
+    def __init__(self, data):
+        self.data = data  # 用于存储数据
+        self.next = None  # 用于指向下一数据
+
+class Queue:
+    def __init__(self):
+        self.front = None  # 头部指针
+        self.rear = None  # 尾部指针
+
+    def offer(self, data):
+        new_node = Node(data)  # 构造一个节点数据
+        if(self.rear == None):
+            self.front = new_node
+        else:
+            self.rear.next = new_node
+        self.rear = new_node
+        new_node.next = None
+
+    def poll(self):
+        if(self.front == None):
+            print("the queue is mepty now!!!")
+        else:
+            temp = self.front
+            self.front = self.front.next
+            temp.next = None
+            return temp.data
+
+    def __str__(self):  # 重载__str__()函数用于,用于print()打印
+        if((self.front == None) & (self.rear == None)):
+            return("This is a queue structure\n" +
+                   "the queue is empty now!!!")
+        else:
+            return("This is a queue structure\n" +
+                   "the rear data is "+str(self.rear.data)+"\n"
+                   "the front data is "+str(self.front.data))
+
+myqueue1 = Queue()  # 实例化一个队列结构
+print(myqueue1)
+myqueue1.offer(3)  # 进队列
+myqueue1.offer([1, 2])  # 进队列
+print(myqueue1)
+poll_value = myqueue1.poll()
+print(poll_value)
+print(myqueue1)
+</code></pre>
+
+    <h2>小结</h2>
+    <li>掌握数据出队的方法</li>
+    <li>掌握队列类的写法，并能够实现数据进出队的方法</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>给上述的栈结构加入一个实例变量length，用来存贮队的长度</li>
+        <li>详细描述一下队头出队、队尾进队的细节，并绘制其过程</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
