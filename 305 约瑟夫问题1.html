@@ -1,0 +1,58 @@
+<html>
+
+<body>
+    <h2>305 约瑟夫问题1</h2>
+    <ol>
+        <li>斐波那契数列</li>
+        <li>斐波那契数列的递归实现</li>
+    </ol>
+
+    <h2>斐波那契数列</h2>
+    斐波那契数列（Fibonacci sequence），又称黄金分割数列，因数学家莱昂纳多·斐波那契（Leonardo
+    Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，指的是这样一个数列：1、1、2、3、5、8、13、21、34、……在数学上，斐波那契数列以如下被以递推的方法定义：f(1)=0，f(2)=1,
+    f(n)=f(n-1)+f(n-2)(n ≥ 3)。
+    从递归的关系式可以看出，该数列只需要最初的几项就可以计算得到后续的任意项的数值。
+
+    <h2>斐波那契数列数列的递归实现</h2>
+    <div>首先考虑斐波那契数列的递归关系,fib(n)的值始终由前两项计算得到</div>
+<pre>
+<code>
+def fib(n):
+    out=fib(n-1) + fib(n-2)
+    return out
+</code>
+</pre>
+    <div>当n&lt;=1时，不存在比n更小的两项，这时存在递归的结束条件</div>
+<pre>
+<code>
+def fib(n):
+    if(n<2):
+        return n
+</code>
+</pre>
+<div>下面是完整的斐波那契数列实现</div>
+<pre>
+<code>
+def fib(n):
+    if(n<2):
+        return n
+    return  fib(n-1) + fib(n-2) 
+</code>
+</pre>
+可以看到，使用递归实现斐波那契数列非常简洁
+    <h2>小结</h2>
+    <li>理解递归算法的终止条件</li>
+    <li>掌握斐波那契数列的递归实现</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>详细描述斐波那契数列递归调用的过程</li>
+        <li>体会递归算法的优点</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>

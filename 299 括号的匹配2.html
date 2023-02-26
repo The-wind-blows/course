@@ -1,0 +1,58 @@
+<html>
+
+<body>
+    <h2>299 括号的匹配2</h2>
+    <ol>
+        <li>字典的构建</li>
+        <li>括号匹配的实现</li>
+    </ol>
+
+    <h2>字典的构建</h2>
+    <div>python中的字典是哈希表的典型实现，可以使用字典来实现括号的匹配</div>
+<pre>
+<code>
+map={
+    ")":"(",
+    "]":"[",
+    "}":"{",
+}
+</code>
+</pre>
+    <h2>括号匹配的实现</h2>
+    <div>使用list可以获得一个栈，在字符temp不在字典中时，直接使用append进行入栈，否则进行匹配</div>
+<pre>
+    <code>
+def isValid(s:str):
+    map={
+        ")":"(",
+        "]":"[",
+        "}":"{",
+    }
+    stack=list()
+    for temp in s:
+        if(temp in map):
+            if(not stack or stack[-1]!=map[temp]):
+                return False
+            else:
+                stack.pop()
+        else:
+            stack.append(temp)
+    return not stack
+</code>
+</pre>
+    <h2>小结</h2>
+    <li>理解字典在匹配中所起到的作用</li>
+    <li>掌握括号匹配的实现</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>详细描述字符入栈和匹配的过程</li>
+        <li>思考为什么匹配时需要判断空栈</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
