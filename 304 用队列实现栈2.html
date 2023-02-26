@@ -1,0 +1,66 @@
+<html>
+
+<body>
+    <h2>304 用队列实现栈2</h2>
+    <ol>
+        <li>数据入栈的实现</li>
+        <li>队列实现栈</li>
+    </ol>
+
+    <h2>数据入栈的实现</h2>
+    在使用队列实现栈的过程中，数据入栈的操作相对麻烦，首先需要准备两个队列，再设计入栈的流程
+<pre><code>
+import collections
+class MyStack:
+    def __init__(self):
+        #初始化两个队列
+        self.queue1 = collections.deque()
+        self.queue2 = collections.deque()
+        
+    def push(self, x):
+        self.queue2.append(x)
+        while self.queue1:
+            self.queue2.append(self.queue1.popleft())
+        self.queue1, self.queue2 = self.queue2, self.queue1
+</code></pre>
+
+    <h2>队列实现栈</h2>
+    队列实现栈的类如下，包含push,pop,top,empty四种基本操作
+<pre><code>
+import collections
+    class MyStack:
+        def __init__(self):
+            #初始化两个队列
+            self.queue1 = collections.deque()
+            self.queue2 = collections.deque()
+            
+        def push(self, x):
+            self.queue2.append(x)
+            while self.queue1:
+                self.queue2.append(self.queue1.popleft())
+            self.queue1, self.queue2 = self.queue2, self.queue1
+        def pop(self):
+            return self.queue1.popleft()
+        def top(self):
+            return self.queue1[0]
+    
+        def empty(self):
+            return not self.queue1
+</code></pre>
+
+    <h2>小结</h2>
+    <li>掌握双队列模拟进栈的方法</li>
+    <li>掌握双队列实现栈的方法</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>为什么进栈后要交换两个队列</li>
+        <li>尝试使用单队列模拟栈</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
