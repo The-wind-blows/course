@@ -1,0 +1,53 @@
+<html>
+
+<body>
+    <h2>306 约瑟夫问题2</h2>
+    <ol>
+        <li>循环队列的模拟</li>
+        <li>约瑟夫问题求解</li>
+    </ol>
+
+    <h2>循环队列的模拟</h2>
+    <div>python内置了队列Queue, 可以方便的使用它来模拟循环队列，注意对Queue而言，get即是出队，put即为入队</div>
+<pre>
+<code>
+q = Queue()
+for i in range(m-1):
+    cur = q.get() # 出队列
+    q.put(cur) # 重新入队列
+</code>
+</pre>
+    <h2>约瑟夫问题求解</h2>
+    <div>使用Queue获得一个队列，模拟约瑟夫问题的过程，下面是完整的实现，输出为出队的顺序</div>
+<pre>
+    <code>
+from queue import Queue
+
+def josepRing(nums, m):
+    q = Queue()
+    for i in nums:
+        q.put(i)       
+    while not q.empty():
+        for i in range(m-1):
+            cur = q.get()
+            q.put(cur)     # 重新入队列     
+        print(q.get())   # 打印出队列
+josepRing([1, 2, 3, 4, 5], 5)
+</code>
+</pre>
+    <h2>小结</h2>
+    <li>掌握循环队列的模拟</li>
+    <li>掌握约瑟夫问题的求解</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>思考还可以怎么求解约瑟夫问题</li>
+        <li>自己编写一遍约瑟夫问题的求解</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
