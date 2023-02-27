@@ -1,0 +1,61 @@
+<html>
+
+<body>
+    <h2>312 双向链表实现双端队列1</h2>
+    <ol>
+        <li>问题描述</li>
+        <li>双向链表实现双端队列</li>
+    </ol>
+
+    <h2>问题描述</h2>
+    <div>使用双向链表设计实现双端队列</div>
+    <img class="aligncenter" src="./图片/shaungduan_queue.jpg" width="367" height="253" />
+    <h2>双向链表实现双端队列</h2>
+    <div>
+        我们同样可以使用双向链表来模拟双端队列，实现双端队列队首与队尾元素的添加、删除。双向链表实现比较简单，双向链表支持在指定结点的前后插入新的结点或者删除新的结点
+    </div>
+    <div>一般双端队列具有以下属性：</div>
+    <ul>
+        <li>  head： 队列的头结点 </li>
+        <li>  tail： 队列的尾结点</li>
+        <li>  capacity: 队列的容量大小 </li>
+        <li>  size: 队列当前的元素数量 </li>
+    </ul>
+    <div>双端队列具有以下方法</div>
+    <ul>
+        <li>  
+            insertFront(value)：队列未满时，在队首头插入一个新的结点，并更新head和size
+        </li>
+        <li> 
+            insertLast(value)：队列未满时，在队尾插入一个新的结点，并更新tail和size
+        </li>
+        <li>  
+            deleteFront()：队列不为空时，删除头结点head，并更新head为后一个节点和size
+        </li>
+        <li>  
+            deleteLast()：队列不为空时，删除尾结点tail，并更新tail为前一个节点和size
+        </li>
+        <li>  
+            getFront()：返回队首结点指向的值，需要检测队列是否为空
+        </li>
+        <li>  
+            getRear()：返回队尾结点指向的值，需要检测队列是否为空
+        </li>
+    </ul>
+
+    <h2>小结</h2>
+    <li>能够分析双向队列所具有的属性和方法并进行设计</li>
+    <li>掌握双向链表实现双向队列的方法</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>如何在队首插入结点并更新head</li>
+        <li>如何删除头结点</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>

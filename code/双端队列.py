@@ -1,25 +1,3 @@
-<html>
-
-<body>
-    <h2>313 双向链表实现双端队列2</h2>
-    <ol>
-        <li>双向链表结点的构造</li>
-        <li>双端队列的完整实现</li>
-    </ol>
-
-    <h2>双向链表结点的构造</h2>
-    双向链表除了当前值外，还存在前一个结点和后一个结点：
-<pre><code>
-class Node:
-    __slots__ = 'prev', 'next', 'val'
-    def __init__(self, val):
-        self.prev = self.next = None
-        self.val = val
-</code></pre>
-
-    <h2>双端队列的完整实现</h2>
-    
-<pre><code>
 class Node:
     __slots__ = 'prev', 'next', 'val'
 
@@ -119,21 +97,3 @@ queue.deleteLast()
 queue.printDeque()
 print("最后结果")
 queue.printDeque()
-</code></pre>
-
-    <h2>小结</h2>
-    <li>掌握双端队列增加、删除结点的方法</li>
-    <li>掌握双端队列类的写法</li>
-
-    <h2>习题</h2>
-    <ol>
-        <li>删除尾结点方法为何在self.tail为空时需要将self.head也置空？</li>
-        <li>尝试自己实现一遍双端队列</li>
-    </ol>
-
-    <h2>打赏</h2>
-    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
-    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
-</body>
-
-</html>
