@@ -1,0 +1,72 @@
+<html>
+
+<body>
+    <h2>318 树的先序遍历</h2>
+    <ol>
+        <li>问题描述</li>
+        <li>先序遍历</li>
+        <li>实现</li>
+    </ol>
+
+    <h2>问题描述</h2>
+    <div>如果要实现遍历一棵树的所有结点，有两种方式，一种是深度优点，一种是广度优先。深度优先是按照递归的方式遍历，而广度优先则是按照层级进行遍历</div>
+
+    <h2>先序遍历</h2>
+    <div>对于任意一个树，只存在根结点、左子树和右子树。所谓先序遍历即是先遍历根结点，再遍历左子树，再遍历右子树，遍历子树的时候也按照这种模式进行。
+        中序遍历和后序遍历也很简单，先遍历左子树，再遍历根结点，再遍历右子树，后序遍历则是按照左子树、右子树、根结点的顺序遍历。
+    </div>
+    <div>
+        以下图为例来说明先序遍历的过程：
+    </div>
+    <ol>
+        <li>
+            首先遍历根结点，得到1
+        </li>
+        <li>然后遍历左子树,遍历左子树时也先遍历根结点，得到左子树的根结点2</li>
+        <li>左子树的左子树只有一个结点4，左子树的右子树为5</li>
+        <li>遍历右子树，右子树只有一个结点为3</li>
+        <li>最终的结果是1,2,4,5,3</li>
+    </ol>
+    <img class="aligncenter" src="./图片/pre_order.jpg" width="367" height="253" />
+    <h2>实现</h2>
+<pre>
+<code>
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def preorderTraversal(root):
+    def preorder(root):
+        if not root:
+            return
+        res.append(root.val)
+        preorder(root.left)
+        preorder(root.right)
+    res = list()
+    preorder(root)
+    return res
+
+tree = TreeNode(1, TreeNode(2), TreeNode(3))
+tree.left.left = TreeNode(4)
+tree.left.right = TreeNode(5)
+print(preorderTraversal(tree)) 
+</code>
+</pre>
+    <h2>小结</h2>
+    <li>理解递归在树的遍历中的应用</li>
+    <li>掌握先序遍历树的方法</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>尝试实现中序遍历</li>
+        <li>尝试实现后序遍历</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
