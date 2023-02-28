@@ -1,43 +1,3 @@
-<html>
-
-<body>
-    <h2>321 哈夫曼树2</h2>
-    <ol>
-        <li>树的构造</li>
-        <li>哈夫曼树的构建</li>
-        <li>完整实现</li>
-    </ol>
-
-    <h2>树的构造</h2>
-    <div> 哈夫曼树中的权即是结点的值，除外，还有左子树和右子树： </div>
-<pre><code>
-class BinaryTree:
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-        self.left = None
-        self.right = None
-</code></pre>
-
-    <h2>哈夫曼树的构建</h2>
-    <div>先获取最小的两个结点，然后构造以此两结点为子结点的树，根结点为子结点的权值和</div>
-<pre><code>
-def makeHuffman(source):
-    m2, name = getMin2(source)
-    print(m2[0].name, m2[1].name)
-    left = m2[0]
-    right = m2[1]
-    sumLR = left.weight + right.weight
-    father = BinaryTree(None, sumLR)
-    father.left = left
-    father.right = right
-    if name == []:
-        return father
-    name.append(father)
-    return makeHuffman(name)
-</code></pre>
-    <h2>完整实现</h2>
-<pre><code>
 from collections import deque
 
 class BinaryTree:
@@ -46,7 +6,7 @@ class BinaryTree:
         self.weight = weight
         self.left = None
         self.right = None
-    
+
 def getMin2(li):
     # 定义获取列表中权重最小的两个结点：
     result = [BinaryTree(None, float('inf')), BinaryTree(None, float('inf'))]
@@ -63,7 +23,7 @@ def getMin2(li):
         else:
             list_new.append(li[i])
     return result, list_new
-    
+
 def makeHuffman(source):
     m2, name = getMin2(source)
     print(m2[0].name, m2[1].name)
@@ -77,7 +37,7 @@ def makeHuffman(source):
         return father
     name.append(father)
     return makeHuffman(name)
-    
+
 def breadthFirst(gen, index=0, nextGen=[], result=[]):
     # 遍历输出结果
     if type(gen) == BinaryTree:
@@ -98,26 +58,9 @@ def breadthFirst(gen, index=0, nextGen=[], result=[]):
         index += 1
     breadthFirst(gen, index, nextGen, result)
     return result
-    
+
 sourceData = [('a', 5), ('b', 4), ('c', 3), ('d', 8),  ('f', 15), ('g', 2)]
 sourceData = [BinaryTree(x[0], x[1]) for x in sourceData]
-    
+
 huffman = makeHuffman(sourceData)
-print(breadthFirst(huffman))  
-</code></pre>
-    <h2>小结</h2>
-    <li>掌握哈夫曼树结点的构造</li>
-    <li>掌握哈夫曼树的构建</li>
-
-    <h2>习题</h2>
-    <ol>
-        <li>你能根据程序的运行结果画出哈夫曼树吗？</li>
-        <li>尝试自己实现一遍哈夫曼树</li>
-    </ol>
-
-    <h2>打赏</h2>
-    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
-    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
-</body>
-
-</html>
+print(breadthFirst(huffman))
