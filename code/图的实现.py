@@ -1,26 +1,3 @@
-
-<h2>323 图的实现2</h2>
-<ol>
-    <li>添加边的功能</li>
-    <li>图的完整实现</li>
-</ol>
-<h2>添加边的功能</h2>
-<div>添加边时首先判断边两边的顶点是否在图内部，之后再调用顶点类的添加邻接点的方法添加边</div>
-<pre><code>
-class Graph:
-    def __init__(self):
-        self.vertList = {}
-        self.numVertices = 0
-    def addEdge(self, f, t, cost=0):
-        if f not in self.vertList:
-            nv = self.addVertex(f)
-        if t not in self.vertList:
-            nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(self.vertList[t], cost) 
-</code></pre>
-<h2>图的完整实现</h2>
-图的完整实现如下，包含顶点类和图类，图包含了添加、获取顶点、添加边等基础功能
-<pre><code>
 class Vertex:
     # 包含5个基本操作，添加某个顶点连接，获取所有连接，获取顶点自身，获取某边权重，打印所有信息
     def __init__(self, key):
@@ -94,19 +71,4 @@ g.addEdge(5, 4, 8)
 g.addEdge(5, 2, 1)
 for v in g:
     for w in v.getConnections():
-        print("(%s , %s)" % (v.getId(), w.getId()))   
-</code></pre>
-
-<h2>小结</h2>
-<ul>
-    <li>掌握为图添加边的方法</li>
-    <li>掌握图的完整实现</li>
-</ul>
-<h2>习题</h2>
-<ol>
-    <li>图内部顶点集合采用字典实现有什么好处？</li>
-    <li>尝试自己实现一遍图的功能</li>
-</ol>
-<h2>打赏</h2>
-赠人玫瑰，手有余香。您的打赏是我们前进的动力！
-<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+        print("(%s , %s)" % (v.getId(), w.getId()))

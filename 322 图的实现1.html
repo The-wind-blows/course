@@ -1,1 +1,72 @@
-https://blog.csdn.net/qq_41816189/article/details/122788370
+
+<h2>322 图的实现1</h2>
+<ol>
+    <li>定义顶点类</li>
+    <li>定义图类</li>
+    <li>图的顶点相关功能</li>
+</ol>
+<h2>定义顶点类</h2>
+创建两个类Graph和Vertex。顶点类Vertex的每个顶点通过字典connectTo来跟踪它连接的顶点和每个边的权重，顶点类的定义如下：
+<pre><code>
+class Vertex:
+    # 包含5个基本操作，添加某个顶点连接，获取所有连接，获取顶点自身，获取某边权重，打印所有信息
+    def __init__(self, key):
+        self.id = key
+        self.connectedTo = {}
+
+    def addNeighbor(self, nbr, weight=0):
+        self.connectedTo[nbr] = weight
+
+    def getConnections(self):
+        return self.connectedTo.keys()
+
+    def getId(self):
+        return self.id
+
+    def getWeight(self, nbr):
+        return self.connectedTo[nbr]
+
+    def __str__(self):
+        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+</code></pre>
+<h2>定义图类</h2>
+一个图是顶点和边的集合，边由顶点的连接关系定义，所以图类最基本含义顶点的集合，另一个值表示顶点的数目
+<pre><code>
+class Graph:
+    def __init__(self):
+        self.vertList = {}
+        self.numVertices = 0
+</code></pre>
+<h2>图的顶点相关功能</h2>
+<div>图至少需要能够添加顶点和获取顶点，每次添加顶点都将顶点数目增加1，然后生成顶点类，再将顶点类加入图的字典中</div>
+<pre><code>
+class Graph:
+    def __init__(self):
+        self.vertList = {}
+        self.numVertices = 0
+
+    def addVertex(self, key):
+        self.numVertices = self.numVertices + 1
+        newVertex = Vertex(key)
+        self.vertList[key] = newVertex
+        return newVertex
+
+    def getVertex(self, n):
+        if n in self.vertList:
+            return self.vertList[n]
+        else:
+            return None
+</code></pre>
+<h2>小结</h2>
+<ul>
+    <li>掌握图顶点类的构造</li>
+    <li>掌握图的构造以及对顶点的处理</li>
+</ul>
+<h2>习题</h2>
+<ol>
+    <li>详细描述一下顶点类个方法的作用</li>
+    <li>图为什么采用邻接表实现而不是邻接矩阵？</li>
+</ol>
+<h2>打赏</h2>
+赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+<img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
