@@ -24,7 +24,6 @@ for k in range(7):
 def show_trace(x,y):
     trace = []
     def add_trace(x, y):
-        global mm
         if x != y:
             add_trace(x, path[x][y])
         return trace.append(y)
@@ -48,4 +47,3 @@ show_trace(0,6)	 # 求A到G的最短路径
 #[22, 16, 14, 17, 9, 11, 0]
 #从 0 到 4 的最短路径为: [0--> 1--> 4]
 #从 0 到 6 的最短路径为: [0--> 3--> 5--> 6]
-

@@ -1,0 +1,47 @@
+<html>
+
+<body>
+    <h2>326 floyd算法1</h2>
+    <ol>
+        <li>问题描述</li>
+        <li>算法原理</li>
+        <li>floyd和dijkstra的比较</li>
+    </ol>
+
+    <h2>问题描述</h2>
+    <div>floyd算法也是用于求图中的最短路径的，该算法基于动态规划不断更新最短距离，直到遍历所有的点。</div>
+    <img class="aligncenter" src="./图片/tu.jpg" width="367" height="253" />
+    <h2>算法原理</h2>
+    <div>
+        该算法的流程相当简单，假设map[i][j]是当前i到j的最短距离，如果存在某个中间点k使得map[i][j]>map[i][k]+map[k][j],则更新map[i][j],用数学表达式则为：
+    </div>
+    <img class="aligncenter" src="./图片/floyd.jpg" width="390" height="100" />
+    <ol>
+        <li> 从任意一条单边路径开始。所有两点之间的距离是边的权，如果两点之间没有边相连，则权为无穷大 </li>
+        <li> 对于每一对顶点 u 和 v，看看是否存在一个顶点 w 使得从u到w再到v比已知的路径更短,如果更短则更新它</li>
+        <li> 重复上述流程直到计算出所有值</li>
+    </ol>
+    <h2>floyd和dijkstra的比较</h2>
+   
+    <ul>
+        <li>时间复杂度： 时间复杂度这个名词你可能有点陌生，它实际上就在指完成算法所消耗的时间。设想一个矩阵有3行3列，那么就有9个值需要更新，每次更新需要遍历所有中间点，那么就需要更新9*3=27次，
+            实际上就是3的立方，也就是说，对于n个顶点的图，floyd求解需要运行n<sup>3</sup>次，这对于算法来讲，计算量很大。而dijkstra则小很多，只需要更新n个顶点，每个顶点比较n次，也就是n<sup>2</sup>次</li>
+        <li>floyd只能一次更新所有最佳路径值，而dijkstra可以一次只计算某个源节点到其它路径的最短距离，如果求解所有路径，那么时间复杂度是相同的</li>
+        <li>dijkstra不能处理负权重，而floyd可以</li>
+    </ul>
+    <h2>小结</h2>
+    <li>掌握floyd算法的原理</li>
+    <li>掌握floyd和dijkstra的主要差异</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>floyd算法是最优解吗？</li>
+        <li>你知道为何dijkstra不能处理负权重吗？查阅相关资料并和同学讨论</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>

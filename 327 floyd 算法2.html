@@ -1,3 +1,99 @@
-https://www.cnblogs.com/luffy123/p/16022262.html
+<html>
 
-https://blog.csdn.net/qq_42650246/article/details/89249521
+<body>
+    <h2>325 floyd算法2</h2>
+    <ol>
+        <li>各点之间最短路径的计算</li>
+        <li>最短路径溯源</li>
+        <li>完整实现</li>
+    </ol>
+
+    <h2>各点之间最短路径的计算</h2>
+    <div>这部分形式上相当简单，只需要对每对顶点寻找中间值比较更新即可，是一个三层嵌套循环   </div>
+<pre>
+<code>
+path = [[i] * 7 for i in range(7)]
+
+for k in range(7):
+    for i in range(7):
+        for j in range(7):
+            if data[i][j] > data[i][k] + data[k][j]:  # 比较距离的大小
+                data[i][j] = data[i][k] + data[k][j]  # 每次都存最小的值
+                path[i][j] = k  # 记录中间点
+</code>
+</pre>
+    <h2>最短路径溯源</h2>
+    <div>除了计算路径值外，还需要存储所有中间点，然后根据中间点递归溯源</div>
+<pre>
+<code>
+def show_trace(x,y):
+    trace = []
+    def add_trace(x, y):
+        if x != y:
+            add_trace(x, path[x][y])
+        return trace.append(y)
+    add_trace(x,y)
+    trace_str = str(trace)
+    trace_str = trace_str.replace(',','-->')
+    print(f"从 {x} 到 {y} 的最短路径为: {trace_str}")
+</code>
+</pre>
+    <h2>完整实现</h2>
+<pre>
+<code>
+f = float('inf')  # float('inf')表示无穷大
+# 准备数据
+data = [
+    [0, 7, f, 5, f, f, f],
+    [7, 0, 8, 9, 7, f, f],
+    [f, 8, 0, f, 5, f, f],
+    [5, 9, f, 0, 15, 6, f],
+    [f, 7, 5, 15, 0, 8, 9],
+    [f, f, f, 6, 8, 0, 11],
+    [f, f, f, f, 9, 11, 0],
+]
+path = [[i] * 7 for i in range(7)]
+
+for k in range(7):
+    for i in range(7):
+        for j in range(7):
+            if data[i][j] > data[i][k] + data[k][j]:  # 比较距离的大小
+                data[i][j] = data[i][k] + data[k][j]  # 每次都存最小的值
+                path[i][j] = k  # 记录中间点
+
+
+# 定义函数找出x到y的具体路径
+def show_trace(x,y):
+    trace = []
+    def add_trace(x, y):
+        if x != y:
+            add_trace(x, path[x][y])
+        return trace.append(y)
+    add_trace(x,y)
+    trace_str = str(trace)
+    trace_str = trace_str.replace(',','-->')
+    print(f"从 {x} 到 {y} 的最短路径为: {trace_str}")
+
+for i in data:
+    print(i)
+
+show_trace(0,4)  # 求A到E的最短路径
+show_trace(0,6)	 # 求A到G的最短路径
+</code>
+</pre>
+    <h2>小结</h2>
+    <li>理解递归溯源的过程</li>
+    <li>掌握floyd算法的实现</li>
+
+    <h2>习题</h2>
+    <ol>
+        <li>详细描述出回溯路径的过程</li>
+        <li>运行floyd和dijkstra,看看它们的解是否相同？为什么？</li>
+    </ol>
+
+    <h2>打赏</h2>
+    赠人玫瑰，手有余香。您的打赏是我们前进的动力！
+    <img src="http://dashima.net/wp-content/uploads/2021/02/donate.png">
+</body>
+
+</html>
